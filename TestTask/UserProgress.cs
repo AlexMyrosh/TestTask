@@ -31,5 +31,20 @@ namespace TestTask
             }
             return new Deck();
         }
+        public static void AddNewWordsFromFile(Deck deck)
+        {
+            if (!File.Exists($"{Directory.GetCurrentDirectory()}\\Words.helloworld")) return;
+
+            var Lines = File.ReadLines($"{Directory.GetCurrentDirectory()}\\Words.helloworld");
+            if (Lines.Count() > deck.Cards.Count)
+            {
+                for(int i = deck.Cards.Count(); i< Lines.Count(); i++)
+                {
+                    string[] words = Lines.ElementAt(i).Split(';');
+                    deck.Cards.Add(new FlashCard(words[0], words[1]));
+                }
+            }
+            SaveProgress(deck);
+        }
     }
 }

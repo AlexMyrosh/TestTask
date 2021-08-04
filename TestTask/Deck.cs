@@ -55,11 +55,11 @@ namespace TestTask
         }
         private void EditWordInFile(string _NewWord, string _NewTranslation, int NumberOfLineInFile)
         {
-            string[] lines = File.ReadAllLines($"{Directory.GetCurrentDirectory()}\\Words.txt", Encoding.Default);
+            string[] lines = File.ReadAllLines($"{Directory.GetCurrentDirectory()}\\Words.helloworld", Encoding.Default);
 
             if (lines[NumberOfLineInFile] != null)
                 lines[NumberOfLineInFile] = $"{_NewWord};{_NewTranslation}";
-            File.WriteAllLines($"{Directory.GetCurrentDirectory()}\\Words.txt", lines);
+            File.WriteAllLines($"{Directory.GetCurrentDirectory()}\\Words.helloworld", lines);
         }
 
         public void RemoveWord()
@@ -84,8 +84,8 @@ namespace TestTask
         }
         private void RemoveWordFromFile(FlashCard card)
         {
-            List<string> Lines = File.ReadLines($"{Directory.GetCurrentDirectory()}\\Words.txt").Where(l => l != $"{card.Word};{card.Translation}").ToList();
-            File.WriteAllLines($"{Directory.GetCurrentDirectory()}\\Words.txt", Lines);
+            List<string> Lines = File.ReadLines($"{Directory.GetCurrentDirectory()}\\Words.helloworld").Where(l => l != $"{card.Word};{card.Translation}").ToList();
+            File.WriteAllLines($"{Directory.GetCurrentDirectory()}\\Words.helloworld", Lines);
         }
 
         public void AddWord()
@@ -103,7 +103,7 @@ namespace TestTask
         }
         private void AddWordToFile(string _word, string _transcription)
         {
-            using (StreamWriter writer = new StreamWriter($"{Directory.GetCurrentDirectory()}\\Words.txt", true))
+            using (StreamWriter writer = new StreamWriter($"{Directory.GetCurrentDirectory()}\\Words.helloworld", true))
             {
                 writer.WriteLine($"{_word};{_transcription}");
                 writer.Close();

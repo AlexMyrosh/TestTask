@@ -13,6 +13,7 @@ namespace TestTask
         static void Main()
         {
             Deck deck = UserProgress.RestoreProgress();
+            UserProgress.AddNewWordsFromFile(deck);
             User user = new User();
             while (true)
             {
